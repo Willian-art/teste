@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Pesquisar - Diário Imperial da Ciência</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    
+</head>
+<body>
+    <header>
+        <h1>Diário Imperial da Ciência <i class="fas fa-search"></i></h1> 
+        <h2>Conhecimento para transformar o Brasil</h2>
+        <p>Educação, ciência, tecnologia e finanças para o futuro imperial do país.</p>
+    </header>
+
+    <main>
+        <div id="search-section" class="search-section">
+            <div class="search-input-wrapper">
+                <input type="text" id="barra de pesquisa" placeholder="Busca artigos, temas ou matérias...">
+                <button id="botaoBuscar">Buscar</button>
+            </div>
+
+            <div id="search-history-container" class="search-history-container">
+                <p class="history-title">Buscas recentes:</p>
+                <div id="recent-searches">
+                    </div>
+                <p class="history-title" style="margin-top: 15px;">Buscas populares:</p>
+                <div id="popular-searches">
+                    </div>
+            </div>
+
+            <div id="results-container" class="results-container">
+                </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Diário Imperial da Ciência</p>
+    </footer>
+
+    <script>
+        function normalizeString(str) {
+            return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+        }
+
+        // Variáveis globais para os elementos e dados
+        let artigosGlobais = []; 
+        const searchInput = document.getElementById('barra de pesquisa');
+        const searchButton = document.getElementById('botaoBuscar');
+        const searchHistoryContainer = document.getElementById('search-history-container');
+        const recentSearchesDiv = document.getElementById('recent-searches');
+        const popularSearchesDiv = document.getElementById('popular-searches');
+        const resultsContainer = document.getElementById('results-container');
+        // mainContentSections foi removido do HTML e do JS.
+
+        // Simulação de buscas populares (adapte aos termos populares do seu site)
+        const popularSearches = [
+            "Nova Lei sobre Educação Ambiental",
+            "Tecnologia militar do futuro",
+            "Descoberta de uma nova espécie de fóssil",
+            "Inteligência Artificial",
+            "Astronomia",
+            "Biologia",
+            "Matemática"
+        ];
+
+        // Função para carregar artigos (simulada)
+        // IMPORTANTE: Se você tem um arquivo JSON de artigos, mude esta função para carregá-lo!
+        function carregar() {
+            // Exemplo de dados de artigos (coloque seus dados reais aqui)
+            // Seus dados devem ter 'titulo', 'subtitulo', 'secao', e 'link' (ou nomes equivalentes)
+            artigosGlobais = [
+                { id: 1, titulo: "Nova Lei sobre Educação Ambiental é aprovada", subtitulo: "Confira os princípios pontos e como isso pode impactar o currículo escolar.", secao: "Educação, Ciência", link: "leiaprovada.html" },
+                { id: 2, titulo: "Descoberta de uma nova espécie de fóssil na Paraíba", subtitulo: "Paleontólogos afirmam que o achado pode reescrever parte da história dos vertebrados no Brasil", secao: "Ciência, Biologia", link: "descorbertanova.html" },
+                { id: 3, titulo: "Tecnologia militar do futuro: Brasil lança novo protótipo de drone nacional", subtitulo: "Conheça os recursos do novo equipamento e seu papel estratégico no cenário global.", secao: "Tecnologia, Defesa", link: "Tecnologiamilitar.html" },
+                { id: 4, titulo: "Segunda Guerra Mundial e os Seus Impactos", subtitulo: "Confira os principais impactos da segunda guerra mundial.", secao: "história", link: "Segundaguerra.html" },
+                { id: 5, titulo: "Astronomia: As últimas descobertas sobre exoplanetas", subtitulo: "Novas pesquisas revelam mundos fascinantes além do nosso sistema solar.", secao: "Ciência, Astronomia", link: "#" },
+                { id: 6, titulo: "Biologia: O papel da microbiota intestinal na saúde humana", subtitulo: "Estudos recentes destacam a importância das bactérias do intestino.", secao: "Biologia, Saúde", link: "#" },
+                { id: 7, titulo: "Matemática: A beleza dos fractais e suas aplicações", subtitulo: "Explorando padrões complexos que se repetem em diferentes escalas.", secao: "Matemática", link: "#" }
+            ];
+
+            // Se você tem um JSON externo, descomente e adapte a função abaixo:
+            /*
+            fetch("caminho/para/seus/artigos.json") // Mude para o caminho correto do seu arquivo JSON
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    artigosGlobais = data; 
+                    console.log("Artigos carregados:", artigosGlobais);
+                })
+                .catch(error => console.error("Erro ao carregar artigos:", error));
+            */
+        }
+
+        function loadRecentSearches() {
+            const recentSearches = JSON.parse(localStorage.getItem('recentSearchesDIAC')) || [];
+            recentSearchesDiv.innerHTML = '';
+            if (recentSearches.length > 0) {
+                recentSearches.forEach(term => {
+                    const p = document.createElement('p');
+                    p.classList.add('history-item');
+                    p.textContent = term;
+                    p.addEventListener('click', () => {
+                        searchInput.value = term;
+                        search();
+                        hideSearchHistory();
+                    });
+                    recentSearchesDiv.appendChild(p);
+                });
+            } else {
+                recentSearchesDiv.innerHTML = '<p style="color:#888;">Nenhuma busca recente.</p>';
+            }
+        }
+
+        function saveSearchTerm(term) {
+            if (term.trim() === '') return;
+            let recentSearches = JSON.parse(localStorage.getItem('recentSearchesDIAC')) || [];
+            recentSearches = recentSearches.filter(t => normalizeString(t) !== normalizeString(term));
+            recentSearches.unshift(term);
+            if (recentSearches.length > 5) { // Limita o número de termos
+                recentSearches = recentSearches.slice(0, 5);
+            }
+            localStorage.setItem('recentSearchesDIAC', JSON.stringify(recentSearches));
+            loadRecentSearches();
+        }
+
+        function displayPopularSearches() {
+            popularSearchesDiv.innerHTML = '';
+            popularSearches.forEach(term => {
+                const p = document.createElement('p');
+                p.classList.add('popular-item');
+                p.textContent = term;
+                p.addEventListener('click', () => {
+                    searchInput.value = term;
+                    search();
+                    hideSearchHistory();
+                });
+                popularSearchesDiv.appendChild(p);
+            });
+        }
+
+        function showSearchHistory() {
+            searchHistoryContainer.classList.add('visible');
+            loadRecentSearches();
+            displayPopularSearches();
+        }
+
+        function hideSearchHistory() {
+            searchHistoryContainer.classList.remove('visible');
+        }
+
+        function search() {
+            const input = searchInput.value;
+            const normalizedInput = normalizeString(input);
+
+            if (normalizedInput === "") {
+                showSearchHistory();
+                resultsContainer.innerHTML = ''; // Limpa os resultados
+                return;
+            }
+
+            hideSearchHistory(); // Esconde o histórico quando a pesquisa não está vazia
+
+            // Salva o termo de busca
+            saveSearchTerm(input);
+
+            resultsContainer.innerHTML = ''; // Limpa os resultados anteriores
+
+            const foundArticles = [];
+            artigosGlobais.forEach(artigo => {
+                // Concatena todos os campos relevantes para a busca
+                const searchString = normalizeString(
+                    (artigo.titulo || "") + " " + 
+                    (artigo.subtitulo || "") + " " + 
+                    (artigo.secao || "") + " " +
+                    (artigo.tags || "") // Se você tiver um campo de tags no JSON
+                );
+                
+                if (searchString.includes(normalizedInput)) {
+                    foundArticles.push(artigo);
+                }
+            });
+
+            if (foundArticles.length > 0) {
+                foundArticles.forEach(artigo => {
+                    const articleDiv = document.createElement('div');
+                    articleDiv.classList.add('article-item');
+                    articleDiv.innerHTML = `
+                        <h3><a href="${artigo.link || '#'}">${artigo.titulo}</a></h3>
+                        <p>${(artigo.subtitulo || '').substring(0, 150)}${artigo.subtitulo && artigo.subtitulo.length > 150 ? '...' : ''}</p>
+                        <p style="font-size: 0.9em; color: #888;">Seção: ${artigo.secao || 'N/A'}</p>
+                    `;
+                    resultsContainer.appendChild(articleDiv);
+                });
+            } else {
+                resultsContainer.innerHTML = '<p class="no-results">Nenhum artigo encontrado para sua pesquisa.</p>';
+            }
+        }
+
+        // Inicialização do Script
+        document.addEventListener('DOMContentLoaded', function() {
+            // Carrega artigos (dados simulados ou de JSON)
+            carregar();
+
+            // Adiciona evento de clique ao botão de busca
+            if (searchButton) {
+                searchButton.addEventListener('click', search);
+            }
+
+            // Comportamento para mostrar/esconder histórico ao digitar e focar
+            if (searchInput) {
+                searchInput.addEventListener('input', () => {
+                    if (searchInput.value.trim() === '') {
+                        showSearchHistory();
+                        resultsContainer.innerHTML = ''; // Limpa os resultados ao esvaziar o input
+                    } else {
+                        search(); // Chama a busca ao digitar
+                    }
+                });
+
+                searchInput.addEventListener('focus', () => {
+                    if (searchInput.value.trim() === '') {
+                        showSearchHistory();
+                    }
+                });
+
+                // Esconde o histórico quando clicar fora da barra de busca ou do contêiner de histórico
+                document.addEventListener('click', (event) => {
+                    if (!searchInput.contains(event.target) && !searchHistoryContainer.contains(event.target) && !searchButton.contains(event.target)) {
+                        hideSearchHistory();
+                    }
+                });
+
+                // Pesquisar ao pressionar Enter
+                searchInput.addEventListener('keypress', function(event) {
+                    if (event.key === 'Enter') {
+                        search();
+                        searchInput.blur(); // Tira o foco do input após a pesquisa com Enter
+                    }
+                });
+            }
+
+            // Exibe o histórico/populares ao carregar a página se a barra de pesquisa estiver vazia
+            if (searchInput.value.trim() === '') {
+                showSearchHistory();
+            }
+        });
+    </script>
+</body>
+</html>

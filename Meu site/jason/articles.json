@@ -1,0 +1,64 @@
+{
+  "artigos": [
+    {
+      "titulo": "Nova Lei sobre Educação Ambiental é aprovada",
+      "subtitulo": "Confira os principais pontos e como isso pode impactar o currículo escolar.",
+      "secao": "Destaques do Dia"
+    },
+    {
+      "titulo": "Descoberta de uma nova espécie de fóssil na Paraíba",
+      "subtitulo": "Paleontólogos afirmam que o achado pode reescrever parte da história dos vertebrados no Brasil!",
+      "secao": "Destaques do Dia"
+    },
+    {
+      "titulo": "Tecnologia militar do futuro: Brasil lança novo protótipo de drone nacional",
+      "subtitulo": "Conheça os recursos do novo equipamento e seu papel estratégico no cenário global.",
+      "secao": "Destaques do Dia"
+    },
+    {
+      "titulo": "Biologia & Genética",
+      "subtitulo": "Acesse conteúdos, notícias e artigos atualizados dessa área.",
+      "secao": "Seções Especiais"
+    },
+    {
+      "titulo": "História & Geopolítica",
+      "subtitulo": "Acesse conteúdos, notícias e artigos atualizados dessa área.",
+      "secao": "Seções Especiais"
+    },
+    {
+      "titulo": "Matemática & Física",
+      "subtitulo": "Acesse conteúdos, notícias e artigos atualizados dessa área.",
+      "secao": "Seções Especiais"
+    },
+    {
+      "titulo": "Tecnologia & Robótica",
+      "subtitulo": "Acesse conteúdos, notícias e artigos atualizados dessa área.",
+      "secao": "Seções Especiais"
+    },
+    {
+      "titulo": "Psicologia & Sociedade",
+      "subtitulo": "Acesse conteúdos, notícias e artigos atualizados dessa área.",
+      "secao": "Seções Especiais"
+    },
+    {
+      "titulo": "Meio Ambiente",
+      "subtitulo": "Acesse conteúdos, notícias e artigos atualizados dessa área.",
+      "secao": "Seções Especiais"
+    },
+    {
+      "titulo": "Educação Financeira",
+      "subtitulo": "Acesse conteúdos, notícias e artigos atualizados dessa área.",
+      "secao": "Seções Especiais"
+    },
+    {
+      "titulo": "Concurso & ENEM",
+      "subtitulo": "Acesse conteúdos, notícias e artigos atualizados dessa área.",
+      "secao": "Seções Especiais"
+    },
+    {
+      "titulo": "Segunda Guerra Mundial e os Seus Impactos",
+      "subtitulo": "Confira os principais pontos e como isso pode impactar o currículo escolar.",
+      "secao": "História & Geopolítica"
+    }
+  ]
+}

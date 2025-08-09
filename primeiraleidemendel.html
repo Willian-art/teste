@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Primeira Lei de Mendel - Genética</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        h1 {
+            text-align: center;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            border-left: 4px solid #3498db;
+            padding-left: 10px;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #34495e;
+            margin-top: 25px;
+        }
+        strong {
+            color: #3498db;
+        }
+        .activity-problem, .resolution-box {
+            background-color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            border: 1px solid #bdc3c7;
+        }
+        details {
+            margin-top: 10px;
+        }
+        summary {
+            cursor: pointer;
+            font-weight: bold;
+            color: #3498db;
+            padding: 10px;
+            background-color: #eaf2f8;
+            border-radius: 5px;
+            border: 1px solid #aed6f1;
+        }
+        summary:hover {
+            background-color: #d4e6f1;
+        }
+        .punnett-table {
+            width: 50%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        .punnett-table td, .punnett-table th {
+            border: 1px solid #7f8c8d;
+            padding: 10px;
+            font-size: 1.2em;
+            width: 33.3%;
+        }
+        .punnett-table th {
+            background-color: #bdc3c7;
+        }
+        .punnett-table .gamete {
+            background-color: #eaf2f8;
+            font-weight: bold;
+        }
+        .genotype-result {
+            background-color: #f9e79f;
+        }
+        ol li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>A Primeira Lei de Mendel: A Lei da Segregação</h1>
+
+        <p>A Primeira Lei de Mendel, também conhecida como Lei da Segregação dos Fatores ou Monoibridismo, é um dos pilares da genética clássica. Ela descreve como as características hereditárias são determinadas por pares de "fatores" (que hoje conhecemos como <strong>genes</strong>) que se separam durante a formação dos gametas, de modo que cada gameta carrega apenas um fator de cada par.</p>
+
+        <h2>Explicação Aprofundada da Primeira Lei de Mendel</h2>
+        <p>Para entender a lei, é crucial dominar alguns conceitos:</p>
+        <ul>
+            <li><strong>Alelos:</strong> São as formas alternativas de um mesmo gene. Por exemplo, para o gene que determina a cor da semente da ervilha, existem os alelos para a cor amarela e para a cor verde.</li>
+            <li><strong>Alelo Dominante:</strong> É o alelo que se manifesta no fenótipo mesmo quando em dose simples (heterozigose). É representado por uma letra maiúscula (ex: 'A').</li>
+            <li><strong>Alelo Recessivo:</strong> É o alelo que só se manifesta no fenótipo quando em dose dupla (homozigose). É representado por uma letra minúscula (ex: 'a').</li>
+            <li><strong>Genótipo:</strong> É a constituição genética de um indivíduo, ou seja, os alelos que ele possui para uma dada característica (ex: AA, Aa, aa).</li>
+            <li><strong>Fenótipo:</strong> É a característica observável de um indivíduo, resultante da interação do genótipo com o ambiente (ex: semente amarela, semente verde).</li>
+            <li><strong>Homozigoto:</strong> Indivíduo que possui dois alelos iguais para uma característica (ex: AA ou aa).</li>
+            <li><strong>Heterozigoto:</strong> Indivíduo que possui dois alelos diferentes para uma característica (ex: Aa).</li>
+        </ul>
+
+        <h3>O Quadro de Punnett: Visualizando a Segregação</h3>
+        <p>O Quadro de Punnett é um diagrama simples usado para prever os resultados de um cruzamento genético. Ele ilustra visualmente como os alelos dos pais se separam (segregam) em seus gametas e como eles podem se combinar para formar os genótipos dos descendentes.</p>
+        <p>Vamos visualizar o cruzamento entre duas plantas de ervilha heterozigotas para a cor da semente (<strong>Aa</strong>), onde 'A' (amarelo) é dominante sobre 'a' (verde).</p>
+
+        <table class="punnett-table">
+            <caption>Quadro de Punnett para o cruzamento Aa x Aa</caption>
+            <tr>
+                <th colspan="2" rowspan="2"></th>
+                <th colspan="2">Gametas do Pai 2 (Aa)</th>
+            </tr>
+            <tr>
+                <td class="gamete">A</td>
+                <td class="gamete">a</td>
+            </tr>
+            <tr>
+                <th rowspan="2">Gametas<br>do Pai 1<br>(Aa)</th>
+                <td class="gamete">A</td>
+                <td class="genotype-result">AA</td>
+                <td class="genotype-result">Aa</td>
+            </tr>
+            <tr>
+                <td class="gamete">a</td>
+                <td class="genotype-result">Aa</td>
+                <td class="genotype-result">aa</td>
+            </tr>
+        </table>
+        <p><b>Resultados:</b></p>
+        <ul>
+            <li><b>Proporção Genotípica:</b> 1 AA : 2 Aa : 1 aa (25% homozigoto dominante, 50% heterozigoto, 25% homozigoto recessivo).</li>
+            <li><b>Proporção Fenotípica:</b> 3 Amarelas : 1 Verde (75% com o fenótipo dominante, 25% com o fenótipo recessivo).</li>
+        </ul>
+
+        <h2>Como Resolver Questões da Primeira Lei de Mendel</h2>
+        <p>Resolver problemas de genética mendeliana fica mais fácil seguindo um passo a passo:</p>
+        <ol>
+            <li><strong>Leia o problema</strong> com atenção para identificar as características e os cruzamentos descritos.</li>
+            <li><strong>Determine a dominância:</strong> Identifique qual alelo é dominante e qual é recessivo. O problema geralmente informa isso.</li>
+            <li><strong>Defina os alelos:</strong> Escolha letras para representar os alelos (ex: 'A' para dominante, 'a' para recessivo).</li>
+            <li><strong>Identifique o genótipo dos pais:</strong> Com base nas informações do problema (se são puros, híbridos, etc.), defina o genótipo dos indivíduos que irão cruzar.</li>
+            <li><strong>Construa o Quadro de Punnett:</strong> Distribua os gametas de cada pai nas linhas e colunas do quadro e combine-os para encontrar os genótipos dos descendentes.</li>
+            <li><strong>Analise os resultados:</strong> Calcule as proporções ou probabilidades genotípicas e fenotípicas conforme solicitado.</li>
+            <li><strong>Responda à pergunta:</strong> Formule a resposta de forma clara, garantindo que você respondeu exatamente o que foi pedido.</li>
+        </ol>
+
+        <h2>Atividades Práticas</h2>
+
+        <div class="activity-problem">
+            <h3>Atividade 1</h3>
+            <p>Em cobaias, o alelo que determina a pelagem preta (P) é dominante sobre o alelo que determina a pelagem branca (p). Qual a probabilidade de nascerem descendentes de pelagem branca a partir do cruzamento de um macho preto heterozigoto com uma fêmea de pelagem branca?</p>
+        </div>
+
+        <div class="activity-problem">
+            <h3>Atividade 2</h3>
+            <p>A capacidade de enrolar a língua é determinada por um gene dominante (E). Joana, que consegue enrolar a língua, é filha de um pai que também consegue, mas sua mãe não consegue. Joana casou-se com Pedro, que também não consegue enrolar a língua. Qual é a probabilidade de o primeiro filho do casal conseguir enrolar a língua?</p>
+        </div>
+
+        <h2>Respostas e Resoluções</h2>
+        
+        <details>
+            <summary>Clique para ver a resolução da Atividade 1</summary>
+            <div class="resolution-box">
+                <ol>
+                    <li><strong>Identificar características:</strong> A característica é a cor da pelagem em cobaias (preta ou branca). O cruzamento é entre um macho preto heterozigoto e uma fêmea branca.</li>
+                    <li><strong>Determinar dominância:</strong> Pelagem preta (P) é dominante; pelagem branca (p) é recessiva.</li>
+                    <li><strong>Definir alelos:</strong> Já definidos: <strong>P</strong> (preto) e <strong>p</strong> (branco).</li>
+                    <li><strong>Genótipo dos pais:</strong>
+                        <ul>
+                            <li>Macho preto heterozigoto: <strong>Pp</strong></li>
+                            <li>Fêmea branca (fenótipo recessivo, logo homozigota): <strong>pp</strong></li>
+                        </ul>
+                    </li>
+                    <li><strong>Quadro de Punnett (Pp x pp):</strong>
+                        <table class="punnett-table">
+                            <tr><th colspan="2" rowspan="2"></th><th colspan="2">Gametas da Fêmea (pp)</th></tr>
+                            <tr><td class="gamete">p</td><td class="gamete">p</td></tr>
+                            <tr><th rowspan="2">Gametas<br>do Macho<br>(Pp)</th><td class="gamete">P</td><td class="genotype-result">Pp</td><td class="genotype-result">Pp</td></tr>
+                            <tr><td class="gamete">a</td><td class="genotype-result">pp</td><td class="genotype-result">pp</td></tr>
+                        </table>
+                    </li>
+                    <li><strong>Analisar resultados:</strong>
+                        <ul>
+                            <li>Genótipos: 2 Pp e 2 pp (ou 50% Pp e 50% pp).</li>
+                            <li>Fenótipos: 2 pretos e 2 brancos (ou 50% pretos e 50% brancos).</li>
+                        </ul>
+                    </li>
+                    <li><strong>Resposta:</strong> A probabilidade de nascerem descendentes de pelagem branca (genótipo pp) é de 2 em 4, ou seja, <strong>50%</strong>.</li>
+                </ol>
+            </div>
+        </details>
+
+        <details>
+            <summary>Clique para ver a resolução da Atividade 2</summary>
+            <div class="resolution-box">
+                <ol>
+                    <li><strong>Identificar características:</strong> A capacidade de enrolar a língua.</li>
+                    <li><strong>Determinar dominância:</strong> Consegue enrolar (E) é dominante; não consegue enrolar (e) é recessivo.</li>
+                    <li><strong>Definir alelos:</strong> <strong>E</strong> (consegue enrolar) e <strong>e</strong> (não consegue).</li>
+                    <li><strong>Genótipo dos pais (Joana e Pedro):</strong>
+                        <ul>
+                            <li><strong>Pedro:</strong> Não consegue enrolar a língua, então seu genótipo é recessivo: <strong>ee</strong>.</li>
+                            <li><strong>Joana:</strong> Consegue enrolar a língua, então seu genótipo tem pelo menos um 'E' (E_). Sua mãe não consegue, então a mãe é 'ee'. Joana obrigatoriamente herdou um alelo 'e' de sua mãe. Portanto, o genótipo de Joana é heterozigoto: <strong>Ee</strong>.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Quadro de Punnett (Ee x ee):</strong>
+                        <table class="punnett-table">
+                             <tr><th colspan="2" rowspan="2"></th><th colspan="2">Gametas do Pedro (ee)</th></tr>
+                            <tr><td class="gamete">e</td><td class="gamete">e</td></tr>
+                            <tr><th rowspan="2">Gametas<br>da Joana<br>(Ee)</th><td class="gamete">E</td><td class="genotype-result">Ee</td><td class="genotype-result">Ee</td></tr>
+                            <tr><td class="gamete">e</td><td class="genotype-result">ee</td><td class="genotype-result">ee</td></tr>
+                        </table>
+                    </li>
+                    <li><strong>Analisar resultados:</strong>
+                        <ul>
+                            <li>Genótipos: 2 Ee e 2 ee (50% Ee e 50% ee).</li>
+                            <li>Fenótipos: 2 que conseguem enrolar a língua e 2 que não conseguem.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Resposta:</strong> A probabilidade de o primeiro filho do casal conseguir enrolar a língua (genótipo Ee) é de 2 em 4, ou seja, <strong>50%</strong>.</li>
+                </ol>
+            </div>
+        </details>
+    </div>
+
+</body>
+</html>

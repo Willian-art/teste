@@ -1,0 +1,301 @@
+/* Seu código CSS existente */
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%; /* Garante que html e body ocupem 100% da altura da viewport */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #eef2f5;
+    color: #333;
+    display: flex; /* Habilita Flexbox no body */
+    flex-direction: column; /* Organiza os filhos em coluna */
+}
+
+header {
+    background-color: #121e6b;
+    color: white;
+    padding: 1.2rem 2rem;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 10px 0 0;
+    font-size: 2.5rem;
+}
+
+header p {
+    margin-top: 5px;
+    font-size: 0.9rem;
+    color: #a7d9f7;
+}
+
+main {
+    flex-grow: 1; /* Permite que o main ocupe todo o espaço disponível, empurrando o footer para baixo */
+    padding: 20px;
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    display: flex; /* Adicionado display flex para main */
+    flex-direction: column; /* Conteúdo interno do main em coluna */
+}
+
+.search-section {
+    padding: 20px;
+}
+
+.search-input-wrapper {
+    position: relative;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centraliza o input e botão */
+}
+
+/* Seletor para o input de pesquisa. O backslash é necessário por causa do espaço no ID. */
+#barra\ de\ pesquisa { 
+    width: 50rem; /* Esta largura fixa será ajustada nas media queries */
+    border-radius: 20px; /* Mais arredondado */
+    border: 1px solid rgb(140, 140, 140);
+    height: 2rem;
+    padding: 0.6rem 1rem; /* Aumentei um pouco o padding para o texto */
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#barra\ de\ pesquisa:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+#botaoBuscar {
+    color: white;
+    background-color: black;
+    border-radius: 20px; /* Mais arredondado */
+    width: auto; /* Ajuste automático */
+    padding: 0.7rem 1.2rem; /* Aumentei o padding */
+    cursor: pointer;
+    border: none;
+    margin-left: 10px; /* Espaçamento entre input e botão */
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+#botaoBuscar:hover {
+    background-color: #333;
+}
+
+.search-history-container {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 25px;
+    display: none; /* Inicia oculto */
+    max-height: 300px;
+    overflow-y: auto;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    /* Garante que o container de histórico se expanda ou contraia sem "pular" o rodapé drasticamente */
+    flex-shrink: 0; /* Não permite que este item encolha */
+}
+
+.search-history-container.visible {
+    display: block;
+}
+
+.history-title {
+    font-weight: bold;
+    color: #555;
+    margin-top: 0;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 5px;
+}
+
+.history-item, .popular-item {
+    padding: 8px 0;
+    cursor: pointer;
+    color: #007bff;
+    transition: color 0.2s ease;
+}
+
+.history-item:hover, .popular-item:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+.results-container {
+    margin-top: 20px;
+    flex-grow: 1; /* Permite que o container de resultados ocupe o espaço restante */
+}
+
+.article-item {
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 30px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.article-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.article-item h3 {
+    margin-top: 0;
+    color: #0056b3;
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+}
+
+.article-item p {
+    color: #666;
+    line-height: 1.6;
+}
+
+.no-results {
+    text-align: center;
+    color: #888;
+    padding: 30px;
+    font-size: 1.1rem;
+} 
+
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: #121e6b;
+    color: #bbb;
+    margin-top: auto; /* Empurra o footer para o final quando usando flex-direction: column no body */
+    font-size: 0.9rem;
+    flex-shrink: 0; /* Impede que o footer encolha */
+}
+
+/* --- MEDIA QUERIES PARA RESPONSIVIDADE --- */
+
+/* Para telas de Tablet (largura máxima de 768px) */
+@media (max-width: 768px) {
+    header {
+        padding: 1rem 1.5rem; /* Ajusta padding do cabeçalho */
+    }
+
+    header h1 {
+        font-size: 2rem; /* Reduz tamanho do título principal */
+    }
+
+    header p {
+        font-size: 0.8rem; /* Reduz tamanho do subtítulo */
+    }
+
+    main {
+        padding: 15px; /* Reduz padding da área principal */
+        margin: 10px auto; /* Ajusta margem */
+        max-width: 90%; /* Permite que o main ocupe mais largura da tela */
+    }
+
+    .search-section {
+        padding: 15px; /* Reduz padding da seção de busca */
+    }
+
+    /* A barra de pesquisa: se torna mais flexível */
+    #barra\ de\ pesquisa {
+        width: 80%; /* Ocupa 80% da largura do pai */
+        max-width: 400px; /* Limita a largura máxima para não ficar muito grande em tablets */
+        font-size: 0.9rem; /* Reduz fonte */
+        padding: 0.5rem 0.8rem; /* Ajusta padding */
+    }
+
+    #botaoBuscar {
+        padding: 0.6rem 1rem; /* Ajusta padding do botão */
+        font-size: 0.9rem; /* Reduz fonte */
+    }
+
+    .article-item {
+        padding: 20px; /* Reduz padding dos itens de artigo */
+    }
+
+    .article-item h3 {
+        font-size: 1.2rem; /* Reduz tamanho do título do artigo */
+    }
+
+    .article-item p {
+        font-size: 0.9rem; /* Reduz tamanho do parágrafo do artigo */
+    }
+
+    footer {
+        padding: 1rem; /* Reduz padding do rodapé */
+        font-size: 0.8rem; /* Reduz fonte do rodapé */
+    }
+}
+
+/* Para telas de Celular (largura máxima de 480px) */
+@media (max-width: 480px) {
+    header {
+        padding: 0.8rem 1rem;
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    header p {
+        font-size: 0.75rem;
+    }
+
+    main {
+        padding: 10px;
+        margin: 5px auto;
+        max-width: 95%; /* Ocupa quase toda a largura em celulares */
+    }
+
+    .search-section {
+        padding: 10px;
+    }
+
+    .search-input-wrapper {
+        flex-direction: column; /* Input e botão empilham em celulares */
+        align-items: stretch; /* Ocupam a largura total disponível */
+    }
+
+    #barra\ de\ pesquisa {
+        width: 100%; /* Ocupa a largura total */
+        max-width: none; /* Remove a limitação de largura máxima */
+        margin-bottom: 10px; /* Espaçamento entre input e botão empilhados */
+        font-size: 0.85rem;
+        height: 1.8rem;
+    }
+
+    #botaoBuscar {
+        width: 100%; /* Botão ocupa a largura total */
+        margin-left: 0; /* Remove margem lateral */
+        padding: 0.6rem 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    .article-item {
+        padding: 15px;
+    }
+
+    .article-item h3 {
+        font-size: 1.1rem;
+    }
+
+    .article-item p {
+        font-size: 0.8rem;
+    }
+
+    .no-results {
+        padding: 20px;
+        font-size: 1rem;
+    }
+
+    footer {
+        padding: 0.8rem;
+        font-size: 0.75rem;
+    }
+}
